@@ -21,7 +21,7 @@ export const metadata: Metadata = {
   ],
   authors: [{ name: "Jonah Bedouch" }, { name: "Brandon Wong" }],
   openGraph: {
-    title: "Jonah Bedouch",
+    title: "CS184 Zen Group",
     description:
       "This is the homepage of Jonah Bedouch and Brandon Wong's CS184 group.",
     url: `https://cs184-zen.vercel.app`,
