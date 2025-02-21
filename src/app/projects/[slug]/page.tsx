@@ -9,7 +9,6 @@ import Contents from "@/components/Contents";
 import { compilePageMdx } from "@/helpers/mdx.helper";
 import { Metadata } from "next";
 import { notFound } from "next/navigation";
-import Navbar from "@/components/Navbar";
 import Link from "next/link";
 
 export const dynamicParams = false;

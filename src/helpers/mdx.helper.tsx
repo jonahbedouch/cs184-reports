@@ -5,6 +5,8 @@ import {
   HTMLAttributes,
   ImgHTMLAttributes,
   TableHTMLAttributes,
+  TdHTMLAttributes,
+  ThHTMLAttributes,
 } from "react";
 import type { ShikiTransformer } from "@shikijs/core";
 
@@ -66,7 +68,7 @@ const P = (
     HTMLParagraphElement
   >,
 ) => (
-  <p className="text-base  mt-5" {...props}>
+  <p className="text-base mt-5" {...props}>
     {props.children}
   </p>
 );
@@ -145,22 +147,23 @@ const H6 = (
 );
 
 const A = ({
-  className,
+  className, //@ts-ignore idk why it thinks href doesn't exist in an anchor elem
+  href,
   ...props
 }: DetailedHTMLProps<HTMLAttributes<HTMLAnchorElement>, HTMLAnchorElement>) => {
   if ("data-heading-link" in props) {
-    //@ts-ignore
     return (
       <HeadingLink
+        href={href}
         className={`group-hover:opacity-100 opacity-0 max-h-full text-primary-800 dark:text-primary-300 underline decoration-transparent hover:decoration-primary-800 dark:hover:decoration-primary-300 transition-colors transition-opacity duration-200 ${className ?? ""}`}
         {...props}
       ></HeadingLink>
     );
   }
 
-  //@ts-ignore
   return (
     <Link
+      href={href}
       className={`text-primary-800 dark:text-primary-300 underline decoration-transparent hover:decoration-primary-800 dark:hover:decoration-primary-300 transition-colors duration-200 ${className ?? ""}`}
       {...props}
     ></Link>
@@ -354,10 +357,15 @@ const Table = ({
 const TableRow = ({
   className,
   ...props
-}: DetailedHTMLProps<
-  TableHTMLAttributes<HTMLTableElement>,
-  HTMLTableElement
->) => {
+}:
+  | DetailedHTMLProps<
+      ThHTMLAttributes<HTMLTableHeaderCellElement>,
+      HTMLTableHeaderCellElement
+    >
+  | DetailedHTMLProps<
+      TableHTMLAttributes<HTMLTableRowElement>,
+      HTMLTableRowElement
+    >) => {
   return <div className={`flex flex-row w-full ${className}`} {...props}></div>;
 };
 
@@ -365,16 +373,16 @@ const TableCell = ({
   className,
   ...props
 }: DetailedHTMLProps<
-  TableHTMLAttributes<HTMLTableElement>,
-  HTMLTableElement
+  TdHTMLAttributes<HTMLTableDataCellElement>,
+  HTMLTableDataCellElement
 >) => {
   return <div className={`w-full ${className}`} {...props}></div>;
 };
 
 const NoOp = (
   props: DetailedHTMLProps<
-    TableHTMLAttributes<HTMLTableElement>,
-    HTMLTableElement
+    TableHTMLAttributes<HTMLTableSectionElement>,
+    HTMLTableSectionElement
   >,
 ) => {
   return <>{props.children}</>;

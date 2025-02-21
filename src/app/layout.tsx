@@ -1,5 +1,3 @@
-// import { Navbar } from '@components/Navbar/Navbar'
-import Navbar from "@/components/Navbar";
 import "./globals.css";
 import { Lato, Geist } from "next/font/google";
 import localFont from "next/font/local";

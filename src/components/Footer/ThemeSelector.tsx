@@ -125,7 +125,7 @@ export function ThemeSelector(props: { className?: string }) {
     });
 
     document.body.classList.add("transition-colors", "transition-[background]");
-  });
+  }, [variant]);
 
   return (
     <Popover className="relative flex align-middle">
