@@ -1,0 +1,234 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* @link https://utopia.fyi/type/calculator?c=320,14,1.125,1580,18,1.2,10,2,&s=0.75|0.5|0.25,1.5|2|3|4|6,s-l&g=s,l,xl,12 */
+
+:root {
+  --step--2: clamp(0.69rem, calc(0.67rem + 0.11vw), 0.78rem);
+  --step--1: clamp(0.78rem, calc(0.74rem + 0.2vw), 0.94rem);
+  --step-0: clamp(0.88rem, calc(0.81rem + 0.32vw), 1.13rem);
+  --step-1: clamp(0.98rem, calc(0.89rem + 0.46vw), 1.35rem);
+  --step-2: clamp(1.11rem, calc(0.98rem + 0.65vw), 1.62rem);
+  --step-3: clamp(1.25rem, calc(1.07rem + 0.89vw), 1.94rem);
+  --step-4: clamp(1.4rem, calc(1.17rem + 1.18vw), 2.33rem);
+  --step-5: clamp(1.58rem, calc(1.27rem + 1.55vw), 2.8rem);
+  --step-6: clamp(1.77rem, calc(1.37rem + 2.01vw), 3.36rem);
+  --step-7: clamp(2rem, calc(1.48rem + 2.58vw), 4.03rem);
+  --step-8: clamp(2.25rem, calc(1.59rem + 3.29vw), 4.84rem);
+  --step-9: clamp(2.53rem, calc(1.69rem + 4.16vw), 5.81rem);
+  --step-10: clamp(2.84rem, calc(1.79rem + 5.24vw), 6.97rem);
+}
+
+/* @link https://utopia.fyi/space/calculator?c=320,14,1.125,1764,18,1.2,10,2,&s=0.75|0.5|0.25,1.5|2|3|4|6,3xs-xl&g=s,l,3xl,12 */
+
+:root {
+  --space-3xs: clamp(0.25rem, calc(0.23rem + 0.08vw), 0.31rem);
+  --space-2xs: clamp(0.44rem, calc(0.41rem + 0.16vw), 0.56rem);
+  --space-xs: clamp(0.69rem, calc(0.64rem + 0.24vw), 0.88rem);
+  --space-s: clamp(0.88rem, calc(0.81rem + 0.32vw), 1.13rem);
+  --space-m: clamp(1.31rem, calc(1.22rem + 0.48vw), 1.69rem);
+  --space-l: clamp(1.75rem, calc(1.62rem + 0.63vw), 2.25rem);
+  --space-xl: clamp(2.63rem, calc(2.43rem + 0.95vw), 3.38rem);
+  --space-2xl: clamp(3.5rem, calc(3.25rem + 1.27vw), 4.5rem);
+  --space-3xl: clamp(5.25rem, calc(4.87rem + 1.9vw), 6.75rem);
+
+  /* One-up pairs */
+  --space-3xs-2xs: clamp(0.25rem, calc(0.17rem + 0.4vw), 0.56rem);
+  --space-2xs-xs: clamp(0.44rem, calc(0.33rem + 0.56vw), 0.88rem);
+  --space-xs-s: clamp(0.69rem, calc(0.58rem + 0.56vw), 1.13rem);
+  --space-s-m: clamp(0.88rem, calc(0.67rem + 1.03vw), 1.69rem);
+  --space-m-l: clamp(1.31rem, calc(1.07rem + 1.19vw), 2.25rem);
+  --space-l-xl: clamp(1.75rem, calc(1.34rem + 2.06vw), 3.38rem);
+  --space-xl-2xl: clamp(2.63rem, calc(2.15rem + 2.38vw), 4.5rem);
+  --space-2xl-3xl: clamp(3.5rem, calc(2.67rem + 4.13vw), 6.75rem);
+
+  /* Custom pairs */
+  --space-3xs-xl: clamp(0.25rem, calc(-0.44rem + 3.46vw), 3.38rem);
+}
+
+/* @link https://utopia.fyi/grid/calculator?c=320,14,1.125,1332,18,1.2,10,2,&s=0.75|0.5|0.25,1.5|2|3|4|6,m-xl&g=s,l,2xl,12 */
+
+:root {
+  --grid-max-width: 83.25rem;
+  --grid-gutter: var(--space-s-l, clamp(0.875rem, 0.4402rem + 2.1739vw, 2.25rem));
+  --grid-columns: 12;
+}
+
+:root {
+  --twc-shadow-color: 0deg 0% 58%;
+  --shadow-elevation-low:
+    0px 0.4px 0.6px hsl(var(--twc-shadow-color) / 0),
+    0px 0.7px 1px hsl(var(--twc-shadow-color) / 0.25),
+    0px 1.5px 2.3px hsl(var(--twc-shadow-color) / 0.51);
+  --shadow-elevation-medium:
+    0px 0.4px 0.6px hsl(var(--twc-shadow-color) / 0),
+    0px 1.5px 2.3px hsl(var(--twc-shadow-color) / 0.13),
+    0px 2.7px 4.1px hsl(var(--twc-shadow-color) / 0.25),
+    0px 4.5px 6.8px hsl(var(--twc-shadow-color) / 0.38),
+    0px 7.7px 11.6px hsl(var(--twc-shadow-color) / 0.51);
+  --shadow-elevation-high:
+    0px 0.4px 0.6px hsl(var(--twc-shadow-color) / 0),
+    0px 3.4px 5.1px hsl(var(--twc-shadow-color) / 0.06),
+    0px 6px 9px hsl(var(--twc-shadow-color) / 0.12),
+    0px 8.5px 12.8px hsl(var(--twc-shadow-color) / 0.18),
+    -0.1px 11.3px 17px hsl(var(--twc-shadow-color) / 0.24),
+    -0.1px 14.6px 21.9px hsl(var(--twc-shadow-color) / 0.3),
+    -0.1px 18.9px 28.4px hsl(var(--twc-shadow-color) / 0.35),
+    -0.1px 24.4px 36.6px hsl(var(--twc-shadow-color) / 0.41),
+    -0.2px 31.4px 47.1px hsl(var(--twc-shadow-color) / 0.47),
+    -0.2px 40.4px 60.6px hsl(var(--twc-shadow-color) / 0.53);
+  --dark-shadow-elevation-low:
+      0px 0.4px 0.6px hsl(var(--twc-shadow-color-dark) / 0),
+      0px 0.7px 1px hsl(var(--twc-shadow-color-dark) / 0.25),
+      0px 1.5px 2.3px hsl(var(--twc-shadow-color-dark) / 0.51);
+  --dark-shadow-elevation-medium:
+      0px 0.4px 0.6px hsl(var(--twc-shadow-color-dark) / 0),
+      0px 1.5px 2.3px hsl(var(--twc-shadow-color-dark) / 0.13),
+      0px 2.7px 4.1px hsl(var(--twc-shadow-color-dark) / 0.25),
+      0px 4.5px 6.8px hsl(var(--twc-shadow-color-dark) / 0.38),
+      0px 7.7px 11.6px hsl(var(--twc-shadow-color-dark) / 0.51);
+  --dark-shadow-elevation-high:
+      0px 0.4px 0.6px hsl(var(--twc-shadow-color-dark) / 0),
+      0px 3.4px 5.1px hsl(var(--twc-shadow-color-dark) / 0.06),
+      0px 6px 9px hsl(var(--twc-shadow-color-dark) / 0.12),
+      0px 8.5px 12.8px hsl(var(--twc-shadow-color-dark) / 0.18),
+      -0.1px 11.3px 17px hsl(var(--twc-shadow-color-dark) / 0.24),
+      -0.1px 14.6px 21.9px hsl(var(--twc-shadow-color-dark) / 0.3),
+      -0.1px 18.9px 28.4px hsl(var(--twc-shadow-color-dark) / 0.35),
+      -0.1px 24.4px 36.6px hsl(var(--twc-shadow-color-dark) / 0.41),
+      -0.2px 31.4px 47.1px hsl(var(--twc-shadow-color-dark) / 0.47),
+      -0.2px 40.4px 60.6px hsl(var(--twc-shadow-color-dark) / 0.53);
+}
+
+.u-container {
+  max-width: var(--grid-max-width);
+  padding-inline: var(--grid-gutter);
+  margin-inline: auto;
+}
+
+.u-grid {
+  display: grid;
+  gap: var(--grid-gutter);
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+@media (prefers-reduced-motion: reduced) {
+  html {
+    scroll-behavior: auto;
+  }
+}
+
+/* CODE BLOCK SETUP */
+code {
+  counter-reset: line;
+}
+
+code[data-line-numbers]>[data-line]::before {
+  counter-increment: line;
+  content: counter(line);
+
+  /* Other styling */
+  display: inline-block;
+  width: 1rem;
+  margin-right: 2rem;
+  text-align: right;
+  color: gray;
+}
+
+code[data-line-numbers-max-digits="2"]>[data-line]::before {
+  width: 2rem;
+}
+
+code[data-line-numbers-max-digits="3"]>[data-line]::before {
+  width: 3rem;
+}
+
+pre {
+  overflow-x: auto;
+  padding: 0.5rem 0;
+}
+
+pre > code:not([data-line-numbers]) [data-line] {
+  padding: 0 1rem;
+}
+
+figure > pre::before {
+  @apply absolute top-1.5 right-9 font-semibold !font-sans text-secondary-950 dark:text-secondary-400;
+  content: attr(data-language)
+}
+
+/* STUFF FOR MARKDOWN CUSTOM ALERTS */
+.markdown-alert {
+  &.markdown-alert-note {
+    @apply border-blue-400 dark:border-blue-600 bg-blue-200 dark:bg-blue-900 bg-opacity-30 dark:bg-opacity-30;
+  
+    & .markdown-alert-title {
+      @apply text-blue-700 dark:text-blue-500;
+    }
+
+    & svg {
+      @apply fill-blue-700 dark:fill-blue-500;
+    }
+  }
+
+  &.markdown-alert-tip {
+    @apply border-green-400 dark:border-green-600 bg-green-200 dark:bg-green-900 bg-opacity-30 dark:bg-opacity-30;
+ 
+    & .markdown-alert-title {
+      @apply text-green-700 dark:text-green-500;
+    }
+
+    & svg {
+      @apply fill-green-700 dark:fill-green-500;
+    }
+  }
+
+  &.markdown-alert-important {
+    @apply border-purple-400 dark:border-purple-600 bg-purple-200 dark:bg-purple-900 bg-opacity-30 dark:bg-opacity-30;
+ 
+    & .markdown-alert-title {
+      @apply text-purple-700 dark:text-purple-500;
+    }
+
+    & svg {
+      @apply fill-purple-700 dark:fill-purple-500;
+    }
+  }
+
+  &.markdown-alert-warning {
+    @apply border-yellow-400 dark:border-yellow-600 bg-yellow-200 dark:bg-yellow-900 bg-opacity-30 dark:bg-opacity-30;
+ 
+    & .markdown-alert-title {
+      @apply text-yellow-700 dark:text-yellow-500;
+    }
+
+    & svg {
+      @apply fill-yellow-700 dark:fill-yellow-500;
+    }
+  }
+
+  &.markdown-alert-caution {
+    @apply border-red-400 dark:border-red-600 bg-red-200 dark:bg-red-900 bg-opacity-30 dark:bg-opacity-30;
+    
+    & .markdown-alert-title {
+      @apply text-red-700 dark:text-red-500;
+    }
+    
+    & svg {
+      @apply fill-red-700 dark:fill-red-500;
+    }
+  }
+}
+
+.markdown-alert-title {
+  @apply relative flex font-black font-lato h-full mb-2;
+
+  &>svg {
+    @apply w-6 h-6 mr-2;
+  }
+}
+

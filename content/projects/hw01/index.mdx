@@ -1,0 +1,128 @@
+---
+published: False
+featured: True
+slug: hw01
+title: Rasterizing SVG Images
+author: Jonah Bedouch and Brandon Wong
+publishDate: 2025-02-20
+lastUpdated: 2025-02-20
+category: Homework 1
+excerpt: "Implementing a simplified SVG rasterizer in C++."
+github: https://github.com/cal-cs184-student/sp25-hw1-zen/tree/master
+---
+
+# Task 1: Drawing Single-Color Triangles
+
+We first begin by finding the cross product of two vectors, one formed by the
+first and second points and one formed by the second and third points. This
+represents two adjacent edges of the triangle, and if the resulting value is
+positive, we know that the winding order is counterclockwise. As such, if it's
+_negative_, we switch two of the points (arbitrarily points 0 and 1), so that
+the winding order becomes counterclockwise. From there, we define each of the
+three points as 2D vectors P0, P1, and P2. We also define the vectors that are
+normal to each edge of the triangle at points P0, P1, and P2 as N0, N1, N2.
+
+After we've found this, we evaluate our points to find the minimum x, maximum x,
+minimum y, and maximum y value. This allows us to create a bounding box around
+the triangle itself by rounding down the minimum and rounding up the maximum. We
+do a nested for loop in order to check whether each pixel in this box is within
+the bounds of the triangle. By adding 0.5 to the minimum values before this loop,
+we are able to perform each check in the center of each pixel.
+
+To do a check for any given pixel, we define 4 vectors -- P, which represents the
+pixel itself; V0, which represents the vector from P0 to P; V1, which represents
+the vector from P1 to P; and V2, which represents the vector from P2 to P. We then
+find the dot product between these V* vectors and their corresponding normal vectors.
+This works because geometrically, performing this operation finds the projection
+of V* onto N*. Because we've ensured that all lines are counter clockwiise, this
+normal vector is pointing inwards into the triangle. As such, if the vector
+pointing at our point is inside of the triangle, it creates an acute angle with
+the normal vector and the resulting dot product is positive. If the vector is on
+the line itself, it will be perpendicular and have a dot product of 0, and if the
+vector is outside of the triangle, it will form an obtuse angle which has a
+negative dot product. As such, we check the angle formed between the normal of
+each of the three edges of the triangle and each of the vectors to the points
+are all greater than or equal to zero (which indicates that the point is inside
+the triangle), and then we rasterize that point. If any of the three are negative,
+the point is outside the triangle and we do nothing.
+
+The algorithm is no worse than one that checks each sample within the bounding box
+of the triangle because the only section of the code that scales is the size of
+the box covered by the dual for loop within the code. This dual for loop is
+limited to covering the bounding box and nothing else.
+
+![Task 1 Test 4 Result](./task1test4.png)
+
+### Extra Credit:
+
+None, we dumb bagel boys.
+
+# Task 2: Antialiasing by Supersampling
+
+The supersampling algorithm works by using a sample_buffer that has been scaled up by
+the sample rate, done in the set_sample_rate and set_framebuffer_target functions. This
+allows each pixel to be represented by a sqrt(sample_rate) by sqrt(sample_rate) square.
+
+With the sample_buffer size set based on the sample rate, when rasterizing each triange
+we loop through each pixel n times, with n being the sample rate. This takes the form of
+two loops that repeat sqrt(n) times, one in the x direction and one in the y direction.
+Each of these two inner loops shift the point being looked at in the pixel by 1 / sqrt(n)
+in their respective direction, starting from half that value into the pixel from the
+starting corner represented by the actual x and y values of the pixel. The check done in
+the previous part occurs and the corresponding point within the pixel in the sample buffer
+is assigned the color if the point in the pixel is within the triangle. Before this color is
+assigned, a check is done to make sure that the point in the sample buffer being modified is
+within the current width and height of the area being looked at to ensure that only area
+within the sample buffer is accessed and modified.
+
+Once the sample buffer is done being filled by the rasterize triangle function, the resolve
+to framebuffer function has to average out all the samples within a pixel to decide the final
+color value of the pixel. This is done by using two loops in the x and y directions to access
+the color value for each sample in the buffer for a pixel and add them together. After the
+color values have been summed, they are divided by the sample rate to obtain the average
+color values for the pixel, which is then converted to the color datatype for the rgb
+framebuffer target and assigned to its respective point in it.
+
+For rasterizing lines and points, the fill_pixel function was modified to loop through the
+samples in the sample buffer for each pixel and assign the same color to every one of them.
+The function for rasterizing triangles was modified to not require it.
+
+The final results are shown below, with supersampling resulting in edge pixels of the triangles
+holding averaged out values that make the triangles loop sharper and smoother than before,
+removing aliasing from pixels that decide their color based on points within them that do not
+match all the colors within the pixel.
+
+| ![Task 2 Test 4 Result for Sample Rate 1](./task2test4sr1.png "Result for Sample Rate 1") | ![Task 2 Test 4 Result for Sample Rate 4](./task2test4sr4.png "Result for Sample Rate 4") | ![Task 2 Test 4 Result for Sample Rate 16](./task2test4sr16.png "Result for Sample Rate 16") |
+| ----------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------- |
+
+# Task 3: Transforms
+
+This task was much simpler than previous ones. To complete this task, the 3D transformation
+matrices from lecture had to be manually and made based on the inputs to the function and returned.
+For rotate, the degree input had to be converted to radians before being put into sine and cosine
+functions to obtain the values for the matrix.
+
+To finish the task, the cubeman was modified to be waving directly at the screen. Its left arm
+(relative to the viewer) is raised up high with and angle at the elbow to look like waving,
+while its right arm has been rotated down to show that it isn't doing anything. The head has
+been tilted away from the left arm to better give the appearance of waving as people tend to angle
+their head away from their waving arm.
+
+![Task 3 Result of Waving Robot](./task3.png "Task 3 Result of Waving Robot")
+
+# Task 4: Barycentric Coordinates
+
+Barycentric coordinates are coordinates based off the points of a triangle. Points on a plane can
+be found by assigning weights to the coordinates of the vertices, and these weights form the barycentric
+coordinates for these points on the plane for the specific triange the weights were generated for.
+This system of assigning weights to vertices of a triangle allows for interpolation of values; in the
+case of the first example shown below, by finding the weights and therefore the barycentric coordinates
+of each point based on the triange below, the colors in the triangle at those points can also be weighted
+in the direction of the color of a corner. The corner a point is closest too would have the largest
+barycentric coordinate value, and as a result the color at that point would be closest to that closest
+corner.
+
+| ![Task 4 Result](./task4.png "Task 4 Result") | ![Task 4 Test 7 Result](./task4test7.png "Task 7 Result") |
+| --------------------------------------------- | --------------------------------------------------------- |
+
+# Task 5: 'Pixel Sampling' for Texture Mapping
