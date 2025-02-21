@@ -169,7 +169,6 @@ export function ThemeSelector(props: { className?: string }) {
             <IconMoon className="mr-2" aria-hidden={true} focusable={false} />{" "}
             Dark
           </button>
-          <MenuSeparator className="my-0.5 h-px bg-secondary-300 dark:bg-secondary-800" />
         </div>
       </PopoverPanel>
     </Popover>
