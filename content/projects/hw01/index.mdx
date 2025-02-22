@@ -8,7 +8,7 @@ publishDate: 2025-02-20
 lastUpdated: 2025-02-20
 category: Homework 1
 excerpt: "Implementing a simplified SVG rasterizer in C++."
-github: cal-cs184-student/sp25-hw1-zen/
+github: cal-cs184-student/sp25-hw1-zen
 ---
 
 # Project Overview
@@ -65,7 +65,7 @@ of the triangle because the only section of the code that scales is the size of
 the box covered by the dual for loop within the code. This dual for loop is
 limited to covering the bounding box and nothing else.
 
-![Task 1 Test 4 Result](./task1test4.png)
+![Task 1 Test 4 Result](task1test4.png "Task 1 Test 4 Result")
 
 ## Extra Credit
 
@@ -133,8 +133,8 @@ match all the colors within the pixel.
 
 | &nbsp;                                                                      | &nbsp;                                                                         |
 | --------------------------------------------------------------------------- | ------------------------------------------------------------------------------ |
-| ![Result for Sample Rate 1](./task2test4sr1.png "Result for Sample Rate 1") | ![Result for Sample Rate 4](./task2test4sr4.png "Result for Sample Rate 4")    |
-| ![Result for Sample Rate 9](./task2test4sr9.png "Result for Sample Rate 9") | ![Result for Sample Rate 16](./task2test4sr16.png "Result for Sample Rate 16") |
+| ![Result for Sample Rate 1](task2test4sr1.png "Result for Sample Rate 1") | ![Result for Sample Rate 4](task2test4sr4.png "Result for Sample Rate 4")    |
+| ![Result for Sample Rate 9](task2test4sr9.png "Result for Sample Rate 9") | ![Result for Sample Rate 16](task2test4sr16.png "Result for Sample Rate 16") |
 
 ## Extra Credit
 
@@ -148,11 +148,11 @@ the smaller non-triangle portion. This is likely made worse due to the implement
 for each subpixel due to previous optimizations, which is just each pixel for the sampling rate of one, but it is clear
 that jittered sampling has worse results, especially at lower sampling rates.
 
-| &nbsp;                                                                                                            | &nbsp;                                                                                                                      |
-| ----------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------- |
-| ![Result with Jittering Sample Rate 1 (1st Trial)](./task2ecjitter11.png "Result with Jittering Sample Rate 1")   | ![Result with Jittering Sample Rate 1 (2nd Trial)](./task2ecjitter12.png "Result with Jittering Sample Rate 1 (2nd Trial)") |
-| ![Result with Jittering Sample Rate 4 (1st Trial)](./task2ecjitter41.png "Result with Jittering Sample Rate 4")   | ![Result with Jittering Sample Rate 4 (2nd Trial)](./task2ecjitter42.png "Result with Jittering Sample Rate 4 (2nd Trial)") |
-| ![Result with Supersampling and Sample Rate 1](./task2ecsuper1.png "Result with Supersampling and Sample Rate 1") | ![Result with Supersampling and Sample Rate 4](./task2ecsuper4.png "Result with Supersampling and Sample Rate 4")           |
+| &nbsp;                                                                                                          | &nbsp;                                                                                                                    |
+| --------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------- |
+| ![Result with Jittering Sample Rate 1 (1st Trial)](task2ecjitter11.png "Result with Jittering Sample Rate 1")   | ![Result with Jittering Sample Rate 1 (2nd Trial)](task2ecjitter12.png "Result with Jittering Sample Rate 1 (2nd Trial)") |
+| ![Result with Jittering Sample Rate 4 (1st Trial)](task2ecjitter41.png "Result with Jittering Sample Rate 4")   | ![Result with Jittering Sample Rate 4 (2nd Trial)](task2ecjitter42.png "Result with Jittering Sample Rate 4 (2nd Trial)") |
+| ![Result with Supersampling and Sample Rate 1](task2ecsuper1.png "Result with Supersampling and Sample Rate 1") | ![Result with Supersampling and Sample Rate 4](task2ecsuper4.png "Result with Supersampling and Sample Rate 4")           |
 
 # Task 3: Transforms
 
@@ -167,7 +167,7 @@ while its right arm has been rotated down to show that it isn't doing anything. 
 been tilted away from the left arm to better give the appearance of waving as people tend to angle
 their head away from their waving arm.
 
-![Task 3 Result of Waving Robot](./task3.png "Task 3 Result of Waving Robot")
+![Task 3 Result of Waving Robot](task3.png "Task 3 Result of Waving Robot")
 
 ## Extra Credit
 
@@ -178,7 +178,7 @@ the overall center, then multipling it with the 90 or -90 degree rotation matrix
 translating it back so it's centered in the viewport again. These functions are called in response the their
 corresponding key presses.
 
-![Task 3 Rotation](./task3extracredit.png "Task 3 Rotation")
+![Task 3 Rotation](task3extracredit.png "Task 3 Rotation")
 
 # Task 4: Barycentric Coordinates
 
@@ -192,9 +192,9 @@ in the direction of the color of a corner. The corner a point is closest too wou
 barycentric coordinate value, and as a result the color at that point would be closest to that closest
 corner.
 
-| &nbsp;                                        | &nbsp;                                                    |
-| --------------------------------------------- | --------------------------------------------------------- |
-| ![Task 4 Result](./task4.png "Task 4 Result") | ![Task 4 Test 7 Result](./task4test7.png "Task 7 Result") |
+| &nbsp;                                      | &nbsp;                                                  |
+| ------------------------------------------- | ------------------------------------------------------- |
+| ![Task 4 Result](task4.png "Task 4 Result") | ![Task 4 Test 7 Result](task4test7.png "Task 7 Result") |
 
 # Task 5: 'Pixel Sampling' for Texture Mapping
 
@@ -224,10 +224,10 @@ to the overall image, especially in cases where the coordinate systems are not 1
 
 One spot where the difference between these modes is quite visible is at the top of the campanile in Test 6:
 
-| &nbsp;                                                                                               | &nbsp;                                                                                |
-| ---------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------- |
-| ![Nearest Neighbor with Sample Rate 1](./task5nearest1.png "Nearest Neighbor with Sample Rate 1")    | ![Bilinear with Sample Rate 1](./task5bilinear1.png "Bilinear with Sample Rate 1")    |
-| ![Nearest Neighbor with Sample Rate 16](./task5nearest16.png "Nearest Neighbor with Sample Rate 16") | ![Bilinear with Sample Rate 16](./task5bilinear16.png "Bilinear with Sample Rate 16") |
+| &nbsp;                                                                                             | &nbsp;                                                                              |
+| -------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------- |
+| ![Nearest Neighbor with Sample Rate 1](task5nearest1.png "Nearest Neighbor with Sample Rate 1")    | ![Bilinear with Sample Rate 1](task5bilinear1.png "Bilinear with Sample Rate 1")    |
+| ![Nearest Neighbor with Sample Rate 16](task5nearest16.png "Nearest Neighbor with Sample Rate 16") | ![Bilinear with Sample Rate 16](task5bilinear16.png "Bilinear with Sample Rate 16") |
 
 We see that especially in Sample Rate 1, the borders to the holes in the middle of the Campanile are much
 more jagged without Bilinear sampling, and the middle hole is much darker and has a very bright orange pixel
@@ -270,10 +270,10 @@ the image being sampled from and the size of the buffer being outputted to.
 For some examples, the image that we chose to focus on is a selfie from Jonah's camera roll from a conference in LA. This image
 was interesting because the logo in the background has a lot of glare, which we see each of these methods render quite differently.
 
-| &nbsp;                                                                                                    | &nbsp;                                                                                                |
-| --------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------- |
-| ![Photo rasterized with L_ZERO P_NEAREST](./task6lzpn.png "Photo raserized with L_ZERO P_NEAREST")        | ![Photo rasterized with L_ZERO P_LINEAR](./task6lzpl.png "Photo rasterized with L_ZERO P_LINEAR")     |
-| ![Photo rasterized with L_NEAREST P_NEAREST](./task6lnpn.png "Photo rasterized with L_NEAREST P_NEAREST") | ![Photo rasterized with L_LINEAR P_LINEAR](./task6llpl.png "Photo rasterized with L_LINEAR P_LINEAR") |
+| &nbsp;                                                                                                  | &nbsp;                                                                                              |
+| ------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------- |
+| ![Photo rasterized with L_ZERO P_NEAREST](task6lzpn.png "Photo raserized with L_ZERO P_NEAREST")        | ![Photo rasterized with L_ZERO P_LINEAR](task6lzpl.png "Photo rasterized with L_ZERO P_LINEAR")     |
+| ![Photo rasterized with L_NEAREST P_NEAREST](task6lnpn.png "Photo rasterized with L_NEAREST P_NEAREST") | ![Photo rasterized with L_LINEAR P_LINEAR](task6llpl.png "Photo rasterized with L_LINEAR P_LINEAR") |
 
 We see that the "amount of antialiasing" increases from top left to bottom right, where there is very visible aliasing within
 the glare itself in the top left. There are many different individual pixel colors, and we see some blue from the background cutting

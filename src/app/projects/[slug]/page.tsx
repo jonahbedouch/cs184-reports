@@ -139,7 +139,7 @@ export default async function Project({
             </Link>{" "}
             or in{" "}
             <Link
-              href={`/assets/projects/${slug}/report.pdf`}
+              href={`/project-assets/${slug}/report.pdf`}
               className="text-primary-800 dark:text-primary-300 underline decoration-transparent hover:decoration-primary-800 dark:hover:decoration-primary-300 transition-colors duration-200 "
             >
               PDF form
