@@ -149,10 +149,10 @@ export default async function Project({
           <p className="text-center">
             The GitHub repository for this project can be found at:{" "}
             <Link
-              href={frontmatter.github}
+              href={`https://github.com/${frontmatter.github}`}
               className="text-primary-800 dark:text-primary-300 underline decoration-transparent hover:decoration-primary-800 dark:hover:decoration-primary-300 transition-colors duration-200 "
             >
-              {frontmatter.github}
+              https://github.com/{frontmatter.github}
             </Link>
             .
           </p>

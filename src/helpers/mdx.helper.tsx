@@ -366,7 +366,13 @@ const TableRow = ({
       TableHTMLAttributes<HTMLTableRowElement>,
       HTMLTableRowElement
     >) => {
-  return <div className={`flex flex-row w-full ${className}`} {...props}></div>;
+  if (props.children != "\xa0b") {
+    return (
+      <div className={`flex flex-row w-full ${className}`} {...props}></div>
+    );
+  } else {
+    return <></>;
+  }
 };
 
 const TableCell = ({

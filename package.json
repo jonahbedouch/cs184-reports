@@ -29,6 +29,7 @@
     "remark-flexible-toc": "^1.1.1",
     "remark-gfm": "^4.0.1",
     "remark-github-blockquote-alert": "^1.2.1",
+    "remark-grid-tables": "^2.2.2",
     "remark-heading-shift": "^1.1.2",
     "remark-unwrap-images": "^4.0.0"
   },
