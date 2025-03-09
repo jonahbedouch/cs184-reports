@@ -47,10 +47,10 @@ below.
 
 | &nbsp;                                                                            | &nbsp;                                                                    |
 | --------------------------------------------------------------------------------- | ------------------------------------------------------------------------- |
-| ![Custom Curve Initial Points](./part1custom0.png "Custom Curve Initial Points")  | ![Custom Curve Step 1](./part1custom1.png "Custom Curve Step 1")          |
-| ![Custom Curve Step 2](./part1custom2.png "Custom Curve Step 2")                  | ![Custom Curve Step 3](./part1custom3.png "Custom Curve Step 3")          |
-| ![Custom Curve Step 4](./part1custom4.png "Custom Curve Step 4")                  | ![Custom Curve Step 5](./part1custom5.png "Custom Curve Step 5")          |
-| ![Custom Curve Step 7](./part1custom7.png "Custom Curve Step 7")                  | ![Different Custom Curve](./part1customdiff.png "Different Custom Curve") |
+| ![Custom Curve Initial Points](part1custom0.png "Custom Curve Initial Points")  | ![Custom Curve Step 1](part1custom1.png "Custom Curve Step 1")          |
+| ![Custom Curve Step 2](part1custom2.png "Custom Curve Step 2")                  | ![Custom Curve Step 3](part1custom3.png "Custom Curve Step 3")          |
+| ![Custom Curve Step 4](part1custom4.png "Custom Curve Step 4")                  | ![Custom Curve Step 5](part1custom5.png "Custom Curve Step 5")          |
+| ![Custom Curve Step 7](part1custom7.png "Custom Curve Step 7")                  | ![Different Custom Curve](part1customdiff.png "Different Custom Curve") |
 
 ## Part 2: Bezier Surfaces with Separable 1D de Casteljau
 By classifying the points into rows and columns, de Casteljau’s algorithm can be implemented on 3D points
@@ -62,7 +62,7 @@ the vector of 3D points that make up one bezier curve, and one to find the final
 along the curves in the other direction generated previously. This enables the generation of the 3D surface
 teapot shown below.
 
-![Bezier Teapot](./part2renderedteapot.png "Bezier Teapot")
+![Bezier Teapot](part2renderedteapot.png "Bezier Teapot")
 
 # Section 2: Triangle Meshes and Half-Edge Data Structure
 
@@ -79,13 +79,13 @@ this with Phong shading in the following images:
 
 | &nbsp;                                                                 | &nbsp;                                                              |
 | ---------------------------------------------------------------------- | ------------------------------------------------------------------- |
-| ![Teapot, flat shading](./part3rectangles.png "Teapot, flat shading")  | ![Teapot, Phong Shading](./part3normal.png "Teapot, Phong Shading") |
+| ![Teapot, flat shading](part3rectangles.png "Teapot, flat shading")  | ![Teapot, Phong Shading](part3normal.png "Teapot, Phong Shading") |
 
 ## Part 4: Edge Flip
 We implemented the edge flip operation by drawing out the necessary flips on a whiteboard,
 producing the following mess:
 
-![Whiteboarding out Part 4](./part4workplan.jpg "Whiteboarding out Part 4")
+![Whiteboarding out Part 4](part4workplan.jpg "Whiteboarding out Part 4")
 
 Here, we drew out the initial and final set of vertices, edges, faces, and half edges. From there,
 we identified all of the changes that needed to happen to make a flip work out, and then pseudo-coded
@@ -103,11 +103,11 @@ selected edge).
 
 The result is below:
 
-![Teapot without any flips](./part4noflips.png "Teapot without any flips")
+![Teapot without any flips](part4noflips.png "Teapot without any flips")
 
 | &nbsp;                                                                     | &nbsp;                                                                   |
 | -------------------------------------------------------------------------- | ------------------------------------------------------------------------ |
-| ![Teapot with a few flips](./part4fewflips.png "Teapot with a few flips")  | ![Teapot with many flips](./part4manyflips.png "Teapot with many flips") |
+| ![Teapot with a few flips](part4fewflips.png "Teapot with a few flips")  | ![Teapot with many flips](part4manyflips.png "Teapot with many flips") |
 
 ## Part 5: Edge Split
 To do part 5, we created a spreadsheet containing each object we would be interacting with in the split, old
@@ -120,11 +120,11 @@ assigned the new pointers to each object such that they pointed to what they wou
 the non half edge objects, we assigned them as they were obtained and generated once all the values that needed
 to be obtained from them were obtained as they are much simpler than the half edge objects. The table is shown below.
 
-![Table of Changes](./part5table.png "Table of Changes")
-![Splitting Before](./part5before.png "Splitting Before")
-![Splitting After](./part5after.png "Splitting After")
-![Splitting and Flipping Before](./part5beforesplitflip.png "Splitting and Flipping Before")
-![Splitting and Flipping After](./part5aftersplitflip.png "Splitting and Flipping After")
+![Table of Changes](part5table.png "Table of Changes")
+![Splitting Before](part5before.png "Splitting Before")
+![Splitting After](part5after.png "Splitting After")
+![Splitting and Flipping Before](part5beforesplitflip.png "Splitting and Flipping Before")
+![Splitting and Flipping After](part5aftersplitflip.png "Splitting and Flipping After")
 
 To handle boundary edges, we added a checker that would figure out which half edge was the boundary edge (if there was
 one) and would assign the non-boundary edge to the same variable each time, which meant we would not have to keep track
@@ -132,8 +132,8 @@ of it later. Then, we set the objects that would be on the boundary side if the 
 boundary things by default, and then set if statements that would have them point to the normal things if the edge was
 not a boundary edge. These results are shown below.
 
-![Boundary Before](./part5ecbefore.png "Boundary Before")
-![Boundary After](./part5ecafter.png "Boundary After")
+![Boundary Before](part5ecbefore.png "Boundary Before")
+![Boundary After](part5ecafter.png "Boundary After")
 
 Debugging was both simpler and odder than in part 4. For this part, I kept getting a segfault after the function would
 finish running that would crash everything. I tried to use print statements throughout the code to check where the error
@@ -171,10 +171,10 @@ on the outside and more okay in the middle:
 
 | &nbsp;                                                            | &nbsp;                                                        |
 | ----------------------------------------------------------------- | ------------------------------------------------------------- |
-| ![Box, no subdivisions](./part6loop0.png "Box, no subdivisions")  | ![Box, 1 subdivision](./part6loop1.png "Box, 1 subdivision")  |
-| ![Box, 2 subdivisions](./part6loop2.png "Box, 2 subdivisions")    | ![Box, 3 subdivision](./part6loop3.png "Box, 3 subdivisions") |
-| ![Box, 4 subdivisions](./part6loop4.png "Box, 4 subdivisions")    | ![Box, 5 subdivision](./part6loop5.png "Box, 5 subdivisions") |
-| ![Box, 6 subdivisions](./part6loop6.png "Box, 6 subdivisions")    | ![Box, 7 subdivision](./part6loop7.png "Box, 7 subdivisions") |
+| ![Box, no subdivisions](part6loop0.png "Box, no subdivisions")  | ![Box, 1 subdivision](part6loop1.png "Box, 1 subdivision")  |
+| ![Box, 2 subdivisions](part6loop2.png "Box, 2 subdivisions")    | ![Box, 3 subdivision](part6loop3.png "Box, 3 subdivisions") |
+| ![Box, 4 subdivisions](part6loop4.png "Box, 4 subdivisions")    | ![Box, 5 subdivision](part6loop5.png "Box, 5 subdivisions") |
+| ![Box, 6 subdivisions](part6loop6.png "Box, 6 subdivisions")    | ![Box, 7 subdivision](part6loop7.png "Box, 7 subdivisions") |
 
 We notice that this effect can be minimized to an extent by adding more subdivisions near the
 edges themselevs. For instance, in the box case, we can add the following pattern and observe
@@ -182,8 +182,8 @@ the result after 3 iterations:
 
 | &nbsp;                                                                | &nbsp;                                                             |
 | --------------------------------------------------------------------- | ------------------------------------------------------------------ |
-| ![Box, split pattern](./part6sub.png "Box, split pattern")            | ![SP Box, 1 subdivision](./part6sub2.png "SP Box, 1 subdivision")  |
-| ![SP Box, 2 subdivisions](./part6sub3.png "SP Box, 2 subdivisions")   | ![SP Box, 3 subdivision](./part6sub4.png "SP Box, 3 subdivisions") |
+| ![Box, split pattern](part6sub.png "Box, split pattern")            | ![SP Box, 1 subdivision](part6sub2.png "SP Box, 1 subdivision")  |
+| ![SP Box, 2 subdivisions](part6sub3.png "SP Box, 2 subdivisions")   | ![SP Box, 3 subdivision](part6sub4.png "SP Box, 3 subdivisions") |
 
 We see that the each iteration is much faster to conform to a rounded pattern, and by iteration 3 it
 is hard to notice any chunkinng (which we still could see visibly on the first one). This is because
@@ -203,10 +203,10 @@ along all four corners, resulting in a symmetric cube. This effect can be seen b
 
 | &nbsp;                                                                             | &nbsp;                                                                         |
 | ---------------------------------------------------------------------------------- | ------------------------------------------------------------------------------ |
-| ![Symmetric Box, no subdivisions](./part6z1.png "Symmetric Box, no subdivisions")  | ![Symmetric Box, 1 subdivision](./part6z2.png "Symmetric Box, 1 subdivision")  |
-| ![Symmetric Box, 2 subdivisions](./part6z3.png "Symmetric Box, 2 subdivisions")    | ![Symmetric Box, 3 subdivision](./part6z4.png "Symmetric Box, 3 subdivisions") |
-| ![Symmetric Box, 4 subdivisions](./part6z5.png "Symmetric Box, 4 subdivisions")    | ![Symmetric Box, 5 subdivision](./part6z6.png "Symmetric Box, 5 subdivisions") |
-| ![Symmetric Box, 6 subdivisions](./part6z7.png "Symmetric Box, 6 subdivisions")    | ![Symmetric Box, 7 subdivision](./part6z8.png "Symmetric Box, 7 subdivisions") |
+| ![Symmetric Box, no subdivisions](part6z1.png "Symmetric Box, no subdivisions")  | ![Symmetric Box, 1 subdivision](part6z2.png "Symmetric Box, 1 subdivision")  |
+| ![Symmetric Box, 2 subdivisions](part6z3.png "Symmetric Box, 2 subdivisions")    | ![Symmetric Box, 3 subdivision](part6z4.png "Symmetric Box, 3 subdivisions") |
+| ![Symmetric Box, 4 subdivisions](part6z5.png "Symmetric Box, 4 subdivisions")    | ![Symmetric Box, 5 subdivision](part6z6.png "Symmetric Box, 5 subdivisions") |
+| ![Symmetric Box, 6 subdivisions](part6z7.png "Symmetric Box, 6 subdivisions")    | ![Symmetric Box, 7 subdivision](part6z8.png "Symmetric Box, 7 subdivisions") |
 
 ### Extra Credit
 
@@ -219,4 +219,4 @@ edges with the previous ratios. This can be seen working on the beetle mesh belo
 
 | &nbsp;                                                             | &nbsp;                                                     |
 | ------------------------------------------------------------------ | ---------------------------------------------------------- |
-| ![Beetle, no subdivisions](./beetle.png "Beetle, no subdivision")  | ![Beetle, subdivided](./beetle2.png "Beetle, subdivided")  |
+| ![Beetle, no subdivisions](beetle.png "Beetle, no subdivision")  | ![Beetle, subdivided](beetle2.png "Beetle, subdivided")  |
